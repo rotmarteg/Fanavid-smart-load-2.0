@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fanavid Smart Load - Premium</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<h2>Fanavid Smart Load</h2>
+<p class="subtitle">Logística Inteligente: Carregamento Misto</p>
+
+<label>TIPO DE VEÍCULO:</label>
+<select id="veiculo">
+<option value="carreta">Carreta Padrão</option>
+<option value="truck">Caminhão Truck (8.00m)</option>
+<option value="toco">Caminhão Toco (7.20m)</option>
+<option value="vlc">Caminhão 3/4 (5.10m)</option>
+</select>
+
+
+
+<div class="section-title">📦 RACKS (FERRO)</div>
+<div class="grid-inputs">
+<div>
+<label>ETHOS:</label>
+<input type="number" id="qEthos" placeholder="0" min="0">
+</div>
+<div>
+<label>JUANDI:</label>
+<input type="number" id="qJuandi" placeholder="0" min="0">
+</div>
+<div>
+<label>COMAX:</label>
+<input type="number" id="qComax" placeholder="0" min="0">
+</div>
+</div>
+
+<div class="section-title">🪵 CAIXAS (MADEIRA)</div>
+<div class="grid-inputs" style="grid-template-columns: 2fr 1fr;">
+<div>
+<label>MODELO DA CAIXA:</label>
+<select id="idCaixa">
+<option value="">-- Selecione --</option>
+<option value="N1">Caixa Nº 1 (850x750)</option>
+<option value="N2">Caixa Nº 2 (1050x800)</option>
+<option value="N5">Caixa Nº 5 (1050x1050)</option>
+<option value="N9">Caixa Nº 9 (1250x850)</option>
+<option value="N16">Caixa Nº 16 (1250x1150)</option>
+<option value="N17">Caixa Nº 17 (1450x1050)</option>
+<option value="N18">Caixa Nº 18 (1450x1300)</option>
+<option value="N19">Caixa Nº 19 (1650x1050)</option>
+<option value="N20">Caixa Nº 20 (1650x1450)</option>
+<option value="N21">Caixa Nº 21 (1850x1050)</option>
+<option value="N22">Caixa Nº 22 (1850x1250)</option>
+<option value="N23">Caixa Nº 23 (2050x1250)</option>
+<option value="N24">Caixa Nº 24 (1800x630)</option>
+<option value="N25">Caixa Nº 25 (1800x800)</option>
+</select>
+</div>
+<div>
+<label>QTD:</label>
+<input type="number" id="qCaixas" placeholder="0" min="0">
+</div>
+</div>
+
+<div id="lista-carregamento" style="display: none;">
+<p style="font-size: 10px; font-weight: bold; color: #555; margin: 5px 0;">ITENS NA CARGA:</p>
+<ul id="itens-lista"></ul>
+</div>
+
+<div class="checkbox-container">
+<input type="checkbox" id="empilhado">
+<label for="empilhado">📂 CARGA COM 2 ANDARES (Racks)</label>
+</div>
+
+<div class="btn-group">
+<button type="button" id="btn-adicionar" onclick="adicionarItem()">➕ ADICIONAR CAIXA À LISTA</button>
+<button type="button" id="btn-calcular" onclick="calcularCarga()">CALCULAR EFICIÊNCIA FINAL</button>
+<button onclick="window.print()" style="background-color: #455a64; margin-top: 10px;">IMPRIMIR RELATÓRIO</button>
+
+</div>
+
+<div id="resultado"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

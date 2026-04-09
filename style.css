@@ -1,0 +1,178 @@
+/* Configuração da Tela */
+body {
+background-color: #7DB89B; /* Verde do fundo */
+font-family: 'Segoe UI', sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+margin: 0;
+padding: 10px;
+}
+
+/* O Card Branco */
+.container {
+background-color: white;
+padding: 25px;
+border-radius: 20px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+width: 100%;
+max-width: 420px; /* Aumentei um pouco para caber melhor os grids */
+}
+
+h2 { margin: 0; color: #333; text-align: center; }
+.subtitle { font-size: 12px; color: #888; margin-bottom: 20px; text-align: center; }
+
+/* Títulos das Seções (Racks e Caixas) */
+.section-title {
+background: #e8f5e9;
+color: #2e7d32;
+padding: 8px 12px;
+font-weight: bold;
+margin-top: 20px;
+margin-bottom: 15px;
+border-left: 5px solid #2e7d32;
+border-radius: 4px;
+font-size: 0.85em;
+text-transform: uppercase;
+}
+
+/* Labels e Inputs */
+label {
+display: block;
+text-align: left;
+font-size: 11px;
+font-weight: bold;
+color: #555;
+margin-bottom: 5px;
+}
+
+input[type="number"], select {
+width: 100%;
+padding: 12px;
+margin-bottom: 10px;
+border: 1px solid #ddd;
+border-radius: 8px;
+background-color: #fcfcfc;
+box-sizing: border-box;
+font-size: 14px;
+}
+
+/* Grid para colocar os itens lado a lado */
+.grid-inputs {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr; /* Três colunas para os racks */
+gap: 10px;
+}
+
+/* Ajuste para o campo de seleção de caixa ocupar mais espaço que a quantidade */
+.grid-inputs div[style*="grid-column: span 2"] {
+grid-column: span 2;
+}
+
+.checkbox-container {
+display: flex;
+align-items: center;
+gap: 10px;
+margin: 15px 0;
+padding: 10px;
+background-color: #f9f9f9;
+border-radius: 8px;
+}
+.checkbox-container label { margin: 0; cursor: pointer; font-size: 10px; }
+
+/* Botões - Configuração Geral */
+button {
+width: 100%;
+padding: 12px;
+color: white;
+border: none;
+border-radius: 10px;
+font-weight: bold;
+font-size: 14px; /* Diminuí um pouco o tamanho da fonte */
+cursor: pointer;
+transition: 0.3s;
+box-sizing: border-box; /* Garante que o padding não aumente o tamanho */
+}
+
+/* Estilo específico para o botão ADICIONAR (Laranja) */
+#btn-adicionar {
+background-color: #f0ad4e;
+margin-bottom: 15px; /* Espaço para o botão de baixo */
+}
+#btn-adicionar:hover {
+background-color: #ec971f;
+}
+
+/* Estilo específico para o botão CALCULAR (Verde) */
+#btn-calcular {
+background-color: #2e7d32;
+margin-bottom: 20px;
+}
+#btn-calcular:hover {
+background-color: #1b5e20;
+transform: translateY(-2px); /* Pequeno efeito ao passar o mouse */
+}
+
+/* Estilo da Lista de Itens Adicionados */
+#lista-carregamento {
+margin-top: 15px;
+margin-bottom: 15px;
+font-size: 0.85em;
+background: #fdfdfd;
+border: 1px solid #eee;
+border-radius: 8px;
+padding: 10px;
+display: none; /* Começa escondido, o JS mostra */
+}
+#lista-carregamento p {
+font-weight: bold;
+color: #555;
+border-bottom: 1px solid #eee;
+padding-bottom: 5px;
+margin-top: 0;
+}
+#itens-lista {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+#itens-lista li {
+display: flex;
+justify-content: space-between;
+padding: 5px 0;
+border-bottom: 1px solid #f9f9f9;
+}
+
+
+/* Rodapé */
+.footer {
+margin-top: 25px;
+font-size: 11px;
+color: #999;
+text-align: center;
+border-top: 1px solid #eee;
+padding-top: 10px;
+}
+
+#resultado {
+margin-top: 20px;
+}
+@media print {
+/* Esconde tudo: botões, inputs, título e logo */
+body * {
+visibility: hidden;
+}
+/* Mostra apenas a área do resultado (o relatório) */
+#resultado, #resultado * {
+visibility: visible;
+}
+/* Posiciona o relatório no topo da página impressa */
+#resultado {
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+border: none !important; /* Remove bordas tracejadas se quiser economizar tinta */
+}
+}
