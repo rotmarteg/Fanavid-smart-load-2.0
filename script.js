@@ -22,7 +22,10 @@ const bancoDadosCaixas = [
 { id: "N22", dimensoes: { c: 1850, l: 1250 }, peso: 170 },
 { id: "N23", dimensoes: { c: 2050, l: 1250 }, peso: 190 },
 { id: "N24", dimensoes: { c: 1800, l: 630 }, peso: 85 },
-{ id: "N25", dimensoes: { c: 1800, l: 800 }, peso: 110 }
+{ id: "N25", dimensoes: { c: 1800, l: 800 }, peso: 110 },
+{ id: "N8", dimensoes : { c: 2500, l: 1350}, peso: 220 },//com 25 peças mais ou menos
+{ id: "N14", dimensoes : { c: 1700, l:1500}, peso: 170 },
+{ id: "N6", dimensoes : { c: 2000, l:2000 }, peso: 180 }, 
 ];
 
 function adicionarItem() {
@@ -77,14 +80,15 @@ const veiculo = document.getElementById('veiculo').value;
 const empilhado = document.getElementById('empilhado').checked;
 const display = document.getElementById('resultado');
 
+// 1. Cálculos dos Racks
 const qE = parseInt(document.getElementById('qEthos').value) || 0;
 const qJ = parseInt(document.getElementById('qJuandi').value) || 0;
 const qC = parseInt(document.getElementById('qComax').value) || 0;
 
 const pesoRacks = (qE * 150) + (qJ * 150) + (qC * 100);
-let areaTotalRacks = (qE * 2.1) + (qJ * 2.1) + (qC * 1.5);
-if (empilhado) areaTotalRacks = areaTotalRacks / 2;
+const areaTotalRacks = (qE * 2.1) + (qJ * 2.1) + (qC * 1.5);
 
+// 2. Cálculos das Caixas de Madeira
 let areaTotalCaixas = 0;
 let pesoTotalCaixas = 0;
 cargaMistaCaixas.forEach(item => {
@@ -92,11 +96,20 @@ areaTotalCaixas += item.areaTotal;
 pesoTotalCaixas += item.pesoTotal;
 });
 
-const areaFinal = areaTotalRacks + areaTotalCaixas;
+// 3. Soma as áreas e pesos ANTES de aplicar o empilhamento
+let areaFinal = areaTotalRacks + areaTotalCaixas;
 const pesoFinalKg = pesoRacks + pesoTotalCaixas;
+
+// 4. Se o botão "Dois Andares" estiver marcado, divide a área total por 2
+if (empilhado) {
+areaFinal = areaFinal / 2;
+}
+
+// 5. Agora sim calcula a porcentagem com a área final (já dividida se for o caso)
 const limite = limitesVeiculos[veiculo];
 const porcentagem = (areaFinal / limite) * 100;
 
+// 6. Interface de Relatório
 display.style.display = "block";
 display.innerHTML = `
 <div style="border: 2px solid #2e7d32; padding: 15px; border-radius: 12px; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
@@ -131,3 +144,4 @@ display.innerHTML = `
 </div>
 </div>`;
 }
+
