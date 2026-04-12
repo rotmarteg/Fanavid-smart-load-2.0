@@ -4,7 +4,7 @@ let cargaMistaCaixas = [];
 const limitesVeiculos = {
 carreta: 13.50 * 2.45,
 truck: 8.00 * 2.40,
-toco: 7.20 * 2.40,
+toco: 7.00 * 2.40,
 vlc: 5.10 * 2.40
 };
 
