@@ -1,93 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fanavid Smart Load - Premium</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanavid Smart Load - Premium</title>
+    <!-- Certifique-se que o arquivo CSS está na mesma pasta -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Rápido para garantir o layout de duas colunas */
+        body { margin: 0; display: flex; height: 100vh; font-family: sans-serif; overflow: hidden; }
+        .sidebar { width: 400px; padding: 20px; overflow-y: auto; background: #fff; border-right: 1px solid #ddd; z-index: 10; }
+        #canvas-3d { flex-grow: 1; background: #f0f5f0; position: relative; }
+        .section-title { font-weight: bold; margin: 20px 0 10px; color: #2e7d32; border-bottom: 2px solid #eee; }
+        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .grid-inputs div label { display: block; font-size: 11px; font-weight: bold; }
+        input, select, button { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+        .btn-group button { margin-top: 10px; cursor: pointer; border: none; border-radius: 4px; font-weight: bold; }
+        #btn-adicionar { background: #1976d2; color: white; }
+        #btn-calcular { background: #2e7d32; color: white; }
+        #itens-lista { font-size: 12px; padding-left: 20px; }
+        @media print { .sidebar { width: 100%; } #canvas-3d { display: none; } }
+    </style>
 </head>
 <body>
-<div class="container">
-<h2>Fanavid Smart Load</h2>
-<p class="subtitle">Logística Inteligente: Carregamento Misto</p>
 
-<label>TIPO DE VEÍCULO:</label>
-<select id="veiculo">
-<option value="carreta">Carreta Padrão</option>
-<option value="truck">Caminhão Truck (8.00m)</option>
-<option value="toco">Caminhão Toco (7.00m)</option>
-<option value="vlc">Caminhão 3/4 (5.10m)</option>
-</select>
+    <!-- LADO ESQUERDO: CONTROLES -->
+    <div class="sidebar">
+        <h2 style="margin-top:0;">Fanavid Smart Load</h2>
+        <p style="font-size: 12px; color: #666;">Logística Inteligente | Margem Seg. 2%</p>
 
+        <label>TIPO DE VEÍCULO:</label>
+        <select id="veiculo" onchange="calcularCarga()">
+    <option value="carreta_mg">Carreta MG (14m)</option>
+            <option value="carreta">Carreta Padrão (13.5)</option>
+            <option value="truck">Caminhão Truck (8.00m)</option>
+            <option value="toco">Caminhão Toco (7.00m)</option>
+            <option value="vlc">Caminhão vlc (5.10m)</option>
+        </select>
 
+        <div class="section-title">📦 RACKS (FERRO)</div>
+        <div class="grid-inputs">
+            <div>
+                <label>ETHOS:</label>
+                <input type="number" id="qEthos" value="0" min="0">
+            </div>
+            <div>
+                <label>JD (John D.):</label>
+                <input type="number" id="qJuandi" value="0" min="0">
+            </div>
+            <div>
+                <label>KOMATSU:</label>
+                <input type="number" id="qComax" value="0" min="0">
+            </div>
+        </div>
 
-<div class="section-title">📦 RACKS (FERRO)</div>
-<div class="grid-inputs">
-<div>
-<label>ETHOS:</label>
-<input type="number" id="qEthos" placeholder="0" min="0">
-</div>
-<div>
-<label>Jhon Deere:</label>
-<input type="number" id="qJuandi" placeholder="0" min="0">
-</div>
-<div>
-<label>COMATSU:</label>
-<input type="number" id="qComax" placeholder="0" min="0">
-</div>
-</div>
+        <div class="section-title">🪵 CAIXAS (MADEIRA)</div>
+        <div style="display: flex; gap: 10px; align-items: flex-end;">
+            <div style="flex-grow: 2;">
+                <label>MODELO:</label>
+                <select id="idCaixa">
+                    <option value="">-- Selecione --</option>
+                    <option value="N1">N1 (850x750)</option>
+                    <option value="N2">N2 (1050x800)</option>
+                    <option value="N5">N5 (1050x1050)</option>
+                    <option value="N9">N9 (1250x850)</option>
+                    <option value="N16">N16 (1250x1150)</option>
+                    <option value="N17">N17 (1450x1050)</option>
+                    <option value="N18">N18 (1450x1300)</option>
+                    <option value="N19">N19 (1650x1050)</option>
+                    <option value="N20">N20 (1650x1450)</option>
+                    <option value="N21">N21 (1850x1050)</option>
+                    <option value="N22">N22 (1850x1250)</option>
+                    <option value="N23">N23 (2050x1250)</option>
+                    <option value="N24">N24 (1800x630)</option>
+                    <option value="N25">N25 (1800x800)</option>
+                    <option value="N14">N14 (1700x1100)</option>
+                    <option value="N8">N8 (2500x1350)</option>
+                    <option value="N6">N6 (2000x2000)</option>
+                </select>
+            </div>
+            <div style="flex-grow: 1;">
+                <label>QTD:</label>
+                <input type="number" id="qCaixas" placeholder="0">
+            </div>
+        </div>
+        <button type="button" id="btn-adicionar" onclick="adicionarItem()" style="margin-top: 10px;">➕ ADICIONAR À CARGA</button>
 
-<div class="section-title">🪵 CAIXAS (MADEIRA)</div>
-<div class="grid-inputs" style="grid-template-columns: 2fr 1fr;">
-<div>
-<label>MODELO DA CAIXA:</label>
-<select id="idCaixa">
-<option value="">-- Selecione --</option>
-<option value="N1">Caixa Nº 1 (850x750)</option>
-<option value="N2">Caixa Nº 2 (1050x800)</option>
-<option value="N5">Caixa Nº 5 (1050x1050)</option>
-<option value="N9">Caixa Nº 9 (1250x850)</option>
-<option value="N16">Caixa Nº 16 (1250x1150)</option>
-<option value="N17">Caixa Nº 17 (1450x1050)</option>
-<option value="N18">Caixa Nº 18 (1450x1300)</option>
-<option value="N19">Caixa Nº 19 (1650x1050)</option>
-<option value="N20">Caixa Nº 20 (1650x1450)</option>
-<option value="N21">Caixa Nº 21 (1850x1050)</option>
-<option value="N22">Caixa Nº 22 (1850x1250)</option>
-<option value="N23">Caixa Nº 23 (2050x1250)</option>
-<option value="N24">Caixa Nº 24 (1800x630)</option>
-<option value="N25">Caixa Nº 25 (1800x800)</option>
-<option value="N14">Caixa Nº 14 (1700x1100)</option>
-<option value="N8">Caixa Nº 8 (2500x1350)</option>
-<option value="N6">Caixa Nº 6 (2000x2000)</option>
-</select>
-</div>
-<div>
-<label>QTD:</label>
-<input type="number" id="qCaixas" placeholder="0" min="0">
-</div>
-</div>
+        <div id="lista-carregamento" style="display: none; margin-top: 15px; background: #f9f9f9; padding: 10px; border-radius: 5px;">
+            <p style="font-size: 10px; font-weight: bold; margin: 0 0 5px;">LISTA DE CARREGAMENTO:</p>
+            <ul id="itens-lista"></ul>
+        </div>
 
-<div id="lista-carregamento" style="display: none;">
-<p style="font-size: 10px; font-weight: bold; color: #555; margin: 5px 0;">ITENS NA CARGA:</p>
-<ul id="itens-lista"></ul>
-</div>
+        <div class="checkbox-container" style="margin-top: 20px; background: #e8f5e9; padding: 10px; border-radius: 5px;">
+            <input type="checkbox" id="empilhado" style="width: auto; margin-right: 10px;">
+            <label for="empilhado" style="font-weight: bold; font-size: 13px; cursor: pointer;">📂 USAR 2 ANDARES (RACKS)</label>
+        </div>
 
-<div class="checkbox-container">
-<input type="checkbox" id="empilhado">
-<label for="empilhado">📂 CARGA COM 2 ANDARES (Racks)</label>
-</div>
+        <div class="btn-group">
+            <button type="button" id="btn-calcular" onclick="calcularCarga()">CALCULAR EFICIÊNCIA FINAL</button>
+            <button onclick="window.print()" style="background-color: #455a64;">IMPRIMIR RELATÓRIO</button>
+        </div>
 
-<div class="btn-group">
-<button type="button" id="btn-adicionar" onclick="adicionarItem()">➕ ADICIONAR CAIXA À LISTA</button>
-<button type="button" id="btn-calcular" onclick="calcularCarga()">CALCULAR EFICIÊNCIA FINAL</button>
-<button onclick="window.print()" style="background-color: #455a64; margin-top: 10px;">IMPRIMIR RELATÓRIO</button>
+        <!-- Onde o relatório vai aparecer -->
+        <div id="resultado" style="margin-top: 20px;"></div>
+    </div>
 
-</div>
+    <!-- LADO DIREITO: GRÁFICO 3D -->
+    <div id="canvas-3d">
+        <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.7); padding: 5px; font-size: 10px; border-radius: 3px;">
+            Use o Mouse para Girar e o Scroll para Zoom
+        </div>
+    </div>
 
-<div id="resultado"></div>
-</div>
-
-<script src="script.js"></script>
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
