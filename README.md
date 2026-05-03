@@ -1,23 +1,51 @@
-# 📦 Smart Load 3.0: Logística Inteligente e Automação 3D
+📦 Smart Load 3.0: Motor de Inteligência Logística e Automação 3D
+📝 Visão Geral
+O Smart Load 3.0 é o resultado da evolução técnica aplicada à resolução de gargalos críticos na logística de vidros planos. O projeto nasceu da necessidade de eliminar a dependência da memória humana e planilhas estáticas no pátio, transformando a experiência operacional em uma interface de autoridade técnica.  
++1
 
-O **Smart Load 3.0** é uma solução Full-Stack desenvolvida para revolucionar a conferência e o carregamento logístico no setor de vidros planos. Através de visualização tridimensional e algoritmos de precisão, o sistema elimina a "invisibilidade" operacional, garantindo total autoridade ao conferente de pátio.
+Nesta versão 3.0, o foco foi a robustez dos dados e a fidelidade visual, permitindo que o conferente visualize a carga em um ambiente tridimensional antes de iniciar qualquer movimentação física.
 
-## 🚀 Principais Inovações (V3.0)
-*   **Visualização Crítica:** Renderização 3D dinâmica utilizando **Three.js** para simulação de posicionamento de racks e caixas[cite: 4, 6].
-*   **Cálculo de Cubagem Automático:** Algoritmo otimizado para aproveitamento de espaço e estabilidade de carga[cite: 4, 5].
-*   **Arquitetura de Dados:** Persistência robusta com **MySQL** para gestão de inventário e histórico de fluxos[cite: 6].
-*   **Interface Operacional:** UI/UX focada no ambiente de pátio, permitindo tomadas de decisão rápidas e seguras[cite: 4, 6].
+🛠️ Arquitetura Técnica e Engenharia
+1. Visualização e Simulação (Three.js)
+Diferente de sistemas convencionais, o Smart Load utiliza o motor Three.js para renderizar racks e caixas em tempo real . Isso permite:
 
-## 🛠️ Tecnologias Utilizadas
-*   **Frontend:** JavaScript (ES6+), Three.js, HTML5 e CSS3.
-*   **Backend:** Node.js.
-*   **Banco de Dados:** MySQL.
-*   **Persistência:** LocalStorage e Integração SQL[cite: 6].
+Sequenciamento Lógico: Planejamento visual da ordem de carregamento para evitar o "retrabalho" de movimentar cargas já posicionadas.  
++1
 
-## 📉 Impacto no Negócio
-*   **Redução de Avarias:** Minimização de danos no transporte por erro de sequenciamento[cite: 4, 5].
-*   **Eficiência de Tempo:** Redução drástica no *lead time* de carregamento e expedição[cite: 5].
-*   **ROI Operacional:** Transformação de processos manuais em fluxos digitais auditáveis[cite: 4, 5].
+Estabilidade de Carga: Simulação do centro de gravidade e distribuição de peso para garantir a segurança no transporte.  
++1
 
----
-*Projeto desenvolvido como parte da evolução tecnológica na Fanavid e validação de competências para o curso de ADS (ENIAC).*
+2. Gestão de Dados e Persistência (MySQL & Node.js)
+A inteligência do sistema reside em sua estrutura de backend:  
+
+Banco de Dados Relacional: Utilização de MySQL para gerenciar o inventário de racks e o histórico de carregamentos, garantindo que cada peça seja auditável.  
+
+Eficiência de Cache: Implementação de localStorage para garantir que a operação não pare em caso de instabilidades momentâneas de rede.  
+
+🚀 Problemas Solucionados (O "Porquê")
+Fim da "Invisibilidade" do Pátio: O sistema atua como o braço direito do conferente, mapeando exatamente onde cada item está e para onde deve ir
+
+Redução Drástica de Avarias: Vidros são materiais sensíveis; o Smart Load elimina manuseios desnecessários, reduzindo significativamente o índice de quebras.  
++1
+
+Otimização do Lead Time: Ao automatizar o cálculo de cubagem, reduzimos o tempo que o caminhão fica parado na doca aguardando planejamento.  
+
+📊 Impacto e Validação
+Este projeto não é apenas acadêmico; ele foi desenhado para aplicação real no setor de expedição da Fanavid[cite: 4, 6]. Ele serve como prova de conceito para:
+
+Logística 4.0: Integração de tecnologia de ponta em processos industriais tradicionais.  
++1
+
+Validação de Competências: Aplicação prática dos conhecimentos em Análise e Desenvolvimento de Sistemas (ADS) para conclusão de horas de estágio obrigatório.  
+
+💻 Como Rodar o Projeto
+(Adicione aqui os comandos de instalação, ex: npm install e npm start)
+
+👨‍💻 Desenvolvedor
+Emanuel Dias – Full-stack Developer & ADS Student (ENIAC)
+
+"Transformando a complexidade do pátio em algoritmos de alta precisão.
+
+<img width="1920" height="1080" alt="apresentação 1" src="https://github.com/user-attachments/assets/d41f6d59-18c8-4448-bde0-04a61c976c84" />
+<img width="1920" height="1080" alt="apresentação 2" src="https://github.com/user-attachments/assets/20d692e0-23d1-4311-8026-14ebc6330f7d" />
+<img width="1920" height="1080" alt="apresentação 3" src="https://github.com/user-attachments/assets/94a02d6d-7f02-4d24-bbdc-1e928070cdb4" />
