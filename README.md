@@ -54,3 +54,12 @@ aviso de ocupação indisponivel
 
 <img width="1920" height="1080" alt="apresentação 3" src="https://github.com/user-attachments/assets/94a02d6d-7f02-4d24-bbdc-1e928070cdb4" />
 demonstração da noção de caixa sobre caixa da mesma medida disponivel caso contrário não funciona, e aviso de espaço indisponivel sendo ocupado 
+
+### 🛠 Tecnologias Utilizadas
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Three.js](https://img.shields.io/badge/Three.js-%23000000.svg?style=for-the-badge&logo=three.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
