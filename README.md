@@ -47,5 +47,10 @@ Emanuel Dias – Full-stack Developer & ADS Student (ENIAC)
 "Transformando a complexidade do pátio em algoritmos de alta precisão.
 
 <img width="1920" height="1080" alt="apresentação 1" src="https://github.com/user-attachments/assets/d41f6d59-18c8-4448-bde0-04a61c976c84" />
+organização de caixas dentro do baú
+
 <img width="1920" height="1080" alt="apresentação 2" src="https://github.com/user-attachments/assets/20d692e0-23d1-4311-8026-14ebc6330f7d" />
+aviso de ocupação indisponivel 
+
 <img width="1920" height="1080" alt="apresentação 3" src="https://github.com/user-attachments/assets/94a02d6d-7f02-4d24-bbdc-1e928070cdb4" />
+demonstração da noção de caixa sobre caixa da mesma medida disponivel caso contrário não funciona, e aviso de espaço indisponivel sendo ocupado 
